@@ -5,7 +5,6 @@
 
 (require 'android-defs)
 (require <com.benjisimon.thermaroid.imports>)
-(require <com.benjisimon.thermaroid.camera>)
 (require <com.benjisimon.thermaroid.utils>)
 
 (activity main
@@ -42,8 +41,12 @@
              (texture-view:set-on-touch-listener (object (ViewOnTouchListener)
                                                          ((on-touch (view :: View) (evt :: MotionEvent)) :: boolean
                                                           (if (equal? MotionEvent:ACTION_UP  (evt:get-action))
-                                                            (camera:auto-focus on-focus)
-                                                            (logi "Taking photo"))
+                                                            (camera:auto-focus on-focus))
+                                                          #f)))
+             (texture-view:set-on-long-click-listener (object (ViewOnLongClickListener)
+                                                         ((on-long-click (view :: View)) :: boolean
+                                                          (logi "Taking photo")
                                                           #t)))
+                                                         
              texture-view)))
 

@@ -16,4 +16,5 @@
 (define-alias TextureView android.view.TextureView)
 (define-alias TextureViewListener android.view.TextureView$SurfaceTextureListener)
 (define-alias ViewOnTouchListener android.view.View$OnTouchListener)
+(define-alias ViewOnLongClickListener android.view.View$OnLongClickListener)
 

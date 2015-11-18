@@ -37,6 +37,3 @@
            (logi "D'oh. Error"))
           ((on-opened (camera :: CameraDevice)) :: void
            (logi "And we're open for business!"))))
-
-  
-

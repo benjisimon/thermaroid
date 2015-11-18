@@ -3,12 +3,13 @@
       package="com.benjisimon.thermaroid"
       android:versionCode="1"
       android:versionName="1.0">
-
+  <uses-sdk android:minSdkVersion="22"/>
   <uses-permission android:name="android.permission.CAMERA" />
   <uses-feature android:name="android.hardware.camera" />
   <uses-feature android:name="android.hardware.camera.autofocus" />
 
-  <application android:label="@string/app_name" android:icon="@drawable/ic_launcher">
+  <application android:label="@string/app_name" android:icon="@drawable/ic_launcher"
+               android:hardwareAccelerated="true">
     <activity android:name="main"
               android:label="@string/app_name">
       <intent-filter>

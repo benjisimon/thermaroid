@@ -5,5 +5,5 @@
 (require <com.benjisimon.thermaroid.imports>)
 (module-export logi)
 
-(define (logi message)
-  (Log:i "main.scm" message))
+(define (logi . words)
+  (Log:i "main.scm" (apply string-append (map *:to-string words))))

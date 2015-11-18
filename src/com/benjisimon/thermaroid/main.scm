@@ -16,9 +16,10 @@
            (let* ((ids :: string[] (camera-ids))
                   (directions :: list (map camera-facing ids))
                   (cam-info (apply string-append
-                                   (lambda (id direction)
-                                     (string-append id ": " direction))
-                                   ids directions)))
+                                   (map
+                                    (lambda (id direction)
+                                      (string-append id ": " direction " "))
+                                    ids directions))))
              (android.widget.TextView (this)
                                       text: (as string cam-info)))))
 

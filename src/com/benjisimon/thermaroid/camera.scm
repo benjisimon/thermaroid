@@ -6,11 +6,12 @@
 (define-alias CameraManager android.hardware.camera2.CameraManager)
 (define-alias Context android.content.Context)
 (define-alias CameraCharacteristics android.hardware.camera2.CameraCharacteristics)
+(require 'android-defs)
 
 (module-export camera-ids camera-facing)
 
 (define (camera-mgr) :: CameraManager
-  (invoke (current-activity) 'getSystemService Context:CAMERA_SERVICE))
+  (invoke (as Activity (current-activity)) 'getSystemService Context:CAMERA_SERVICE))
 
 (define (camera-ids) :: string[]
   (let ((mgr :: CameraManager (camera-mgr)))
@@ -21,7 +22,7 @@
          (details :: CameraCharacteristics (mgr:get-camera-characteristics id))
          (key CameraCharacteristics:LENS_FACING)
          (direction (details:get key)))
-    (vector-ref direction (vector "Front" "Back" "External"))))
+    (vector-ref (vector "Front" "Back" "External") direction)))
 
   
 

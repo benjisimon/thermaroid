@@ -13,4 +13,5 @@
 (define-alias TextureView android.view.TextureView)
 (define-alias TextureViewListener android.view.TextureView$SurfaceTextureListener)
 (define-alias Camera android.hardware.Camera)
+(define-alias CameraAutoFocusCallback android.hardware.Camera$AutoFocusCallback)
 

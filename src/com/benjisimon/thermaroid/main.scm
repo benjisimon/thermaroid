@@ -21,7 +21,11 @@
                        (let ((c :: Camera (Camera:open)))
                          (set! camera c)
                          (camera:setPreviewTexture surface)
-                         (camera:startPreview)))
+                         (camera:startPreview)
+                         (camera:autoFocus (object (CameraAutoFocusCallback)
+                                                   ((on-auto-focus (success :: boolean) (camera :: Camera)) :: void
+                                                    (logi "Focused? " success))))))
+
 
                       ((on-surface-texture-size-changed (surface :: SurfaceTexture)
                                                         (width :: int)

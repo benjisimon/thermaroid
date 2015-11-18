@@ -1,5 +1,8 @@
 ;;
-;; The camera is responsible for working with the camera
+;; The camera is responsible for working with the new camera2 API.
+;;
+;; XXX - at the moment, we don't bother with Camera2, as it's a
+;; pain in the butt to work with. 
 ;;
 
 (require <com.benjisimon.thermaroid.imports>)

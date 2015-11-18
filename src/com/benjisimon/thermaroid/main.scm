@@ -10,23 +10,29 @@
 
 (activity main
           (on-create-view
-           (let* ((texture-view (TextureView (this))))
+           (let* ((texture-view (TextureView (this)))
+                  (camera :: Camera #!null))
              (logi "Hardware accelerated? " (texture-view:is-hardware-accelerated))
              (texture-view:set-surface-texture-listener 
               (object (TextureViewListener)
                       ((on-surface-texture-available (surface :: SurfaceTexture)
                                                      (width :: int)
                                                      (height :: int))
-                       (logi "And our surface is ready! " width "x" height)
-                       (logi width))
+                       (let ((c :: Camera (Camera:open)))
+                         (set! camera c)
+                         (camera:setPreviewTexture surface)
+                         (camera:startPreview)))
+
                       ((on-surface-texture-size-changed (surface :: SurfaceTexture)
                                                         (width :: int)
                                                         (height :: int))
-                       (logi "Do'h, new dimensions: " width "x" height))
+                       #!void)
+
                       ((on-surface-texture-destroyed (surface :: SurfaceTexture)) :: boolean
+                       (camera:stopPreview)
+                       (camera:release)
                        #t)
                       ((on-surface-texture-updated (surface :: SurfaceTexture))
-                       (log "udpated"))))
-             (camera-open "0")
+                       #!void)))
              texture-view)))
 

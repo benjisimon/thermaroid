@@ -45,7 +45,10 @@
                                                           #f)))
              (texture-view:set-on-long-click-listener (object (ViewOnLongClickListener)
                                                          ((on-long-click (view :: View)) :: boolean
-                                                          (logi "Taking photo")
+                                                          (camera:take-picture #!null #!null #!null
+                                                                               (object (CameraPictureCallback)
+                                                                                       ((on-picture-taken (data :: byte[]) (camera :: Camera))
+                                                                                        (logi "Got it!!"))))
                                                           #t)))
                                                          
              texture-view)))

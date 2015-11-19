@@ -4,6 +4,7 @@
 
 (define-alias Activity android.app.Activity)
 (define-alias Camera android.hardware.Camera)
+(define-alias CameraPictureCallback android.hardware.Camera$PictureCallback)
 (define-alias CameraAutoFocusCallback android.hardware.Camera$AutoFocusCallback)
 (define-alias CameraCharacteristics android.hardware.camera2.CameraCharacteristics)
 (define-alias CameraDevice android.hardware.camera2.CameraDevice)

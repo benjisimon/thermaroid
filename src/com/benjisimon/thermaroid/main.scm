@@ -6,6 +6,8 @@
 (require 'android-defs)
 (require <com.benjisimon.thermaroid.imports>)
 (require <com.benjisimon.thermaroid.utils>)
+(require <com.benjisimon.thermaroid.printer>)
+(require <com.benjisimon.thermaroid.images>)
 
 (activity main
           (on-create-view
@@ -48,7 +50,10 @@
                                                           (camera:take-picture #!null #!null #!null
                                                                                (object (CameraPictureCallback)
                                                                                        ((on-picture-taken (data :: byte[]) (camera :: Camera))
-                                                                                        (logi "Got it!!"))))
+                                                                                        (let ((bitmap :: Bitmap (BitmapFactory:decode-byte-array data 0 data:length)))
+                                                                                          (send-to-printer logi 
+                                                                                                           (lambda (stream)
+                                                                                                                  (image-write logi bitmap #t stream)))))))
                                                           #t)))
                                                          
              texture-view)))
